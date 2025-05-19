@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dotenv": "^16.5.0",
     "mime-types": "^3.0.1"
   }
 }

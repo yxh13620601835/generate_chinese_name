@@ -4,8 +4,18 @@ const fs = require('fs');
 const path = require('path');
 const mime = require('mime-types');
 
-const API_KEY = 'a122c5a5-82a1-44c7-b74e-33a0f46bdfd8';
-const API_URL = 'https://ark.cn-beijing.volces.com/api/v3/chat/completions';
+// 根据环境加载配置
+if (process.env.VERCEL) {
+    // Vercel环境，直接使用环境变量
+    console.log('Running in Vercel environment');
+} else {
+    // 本地环境，从.env文件加载
+    require('dotenv').config();
+    console.log('Running in local environment');
+}
+
+const API_KEY = process.env.DEEPSEEK_API_KEY;
+const API_URL = process.env.DEEPSEEK_API_URL;
 
 const server = http.createServer((req, res) => {
     // 设置CORS头部
