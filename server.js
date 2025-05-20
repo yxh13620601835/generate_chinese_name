@@ -19,9 +19,11 @@ const API_URL = process.env.DEEPSEEK_API_URL;
 
 const server = http.createServer((req, res) => {
     // 设置CORS头部
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    const origin = req.headers.origin || '*';
+    res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
     // 处理CORS预检请求
     if (req.method === 'OPTIONS') {
@@ -193,8 +195,9 @@ Meaning: [英文解释]`;
         // 设置正确的Content-Type
         const contentType = mime.lookup(extname) || 'application/octet-stream';
         res.writeHead(200, { 
-            'Content-Type': `${contentType}; charset=utf-8`,
-            'Cache-Control': 'no-cache'
+            'Content-Type': `${contentType}${contentType.startsWith('text') ? '; charset=utf-8' : ''}`,
+            'Cache-Control': 'public, max-age=31536000',
+            'Access-Control-Allow-Origin': origin
         });
         res.end(content, 'utf-8');
     });
