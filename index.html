@@ -161,7 +161,7 @@
             results.style.display = 'none';
 
             try {
-                const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/generate' : 'https://generate-chinese-name-evdw9tdx6-yxh1920601835s-projects.vercel.app/generate';
+                const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/generate' : '/generate';
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
