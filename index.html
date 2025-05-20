@@ -161,7 +161,7 @@
             results.style.display = 'none';
 
             try {
-                const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/generate' : '/generate';
+                const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/generate' : '/api/generate';
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
