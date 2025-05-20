@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.5;
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(230, 0, 18, 0.1);
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(230, 0, 18, 0.15);
+}
+
+h1 {
+    color: #e60012;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.input-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    padding: 15px 20px;
+    width: 300px;
+    font-size: 16px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #e60012;
+    box-shadow: 0 0 0 3px rgba(230, 0, 18, 0.1);
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #e60012;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.results {
+    display: none;
+    margin-top: 30px;
+}
+
+.name-card {
+    background-color: #fff;
+    border: 2px solid #ffe4e4;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.name-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #e60012;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.name-card:hover {
+    border-color: #e60012;
+    transform: translateX(5px);
+}
+
+.name-card:hover::before {
+    transform: scaleY(1);
+}
+
+.name-card h3 {
+    color: #e60012;
+    margin-top: 0;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.loading:after {
+    content: 'Generating...';
+    animation: dots 1.5s steps(5, end) infinite;
+    background: linear-gradient(45deg, #e60012, #ff4d4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+}
+
+@keyframes dots {
+    0%, 20% { content: 'Generating'; }
+    40% { content: 'Generating.'; }
+    60% { content: 'Generating..'; }
+    80% { content: 'Generating...'; }
+}
